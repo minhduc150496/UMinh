@@ -1,0 +1,9 @@
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\bin\Debug\UMinh.exe.config
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\bin\Debug\UMinh.exe
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\bin\Debug\UMinh.pdb
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.csprojResolveAssemblyReference.cache
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.frmMainForm.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.Properties.Resources.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.csproj.GenerateResource.Cache
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.exe
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.pdb
