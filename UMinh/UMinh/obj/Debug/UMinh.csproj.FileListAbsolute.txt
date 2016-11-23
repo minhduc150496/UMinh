@@ -7,3 +7,14 @@ D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.Properties.Resources.res
 D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.csproj.GenerateResource.Cache
 D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.exe
 D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\obj\Debug\UMinh.pdb
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\bin\Debug\UMinh.exe.config
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\bin\Debug\UMinh.exe
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\bin\Debug\UMinh.pdb
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.csprojResolveAssemblyReference.cache
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.frmOrdersDetail.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.frmOrdersInput.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.Properties.Resources.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.csproj.GenerateResource.Cache
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.exe
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.pdb
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.MainForm.resources
