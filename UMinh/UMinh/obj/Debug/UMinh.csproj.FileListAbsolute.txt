@@ -18,3 +18,5 @@ D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.csproj.GenerateRes
 D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.exe
 D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.pdb
 D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.MainForm.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.frmOrderDetailsDetail.resources
+D:\DaiHoc\2016 Fall\CS\Code\UMinh\UMinh\UMinh\obj\Debug\UMinh.frmOrderDetailsInput.resources
