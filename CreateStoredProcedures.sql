@@ -265,23 +265,23 @@ GO
 --GO
 
 
-CREATE PROCEDURE  SearchOrdersByProductName(
-	-- Add the parameters for the stored procedure here
-			@productname nvarchar(40)
-	)
-AS
-BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
+--CREATE PROCEDURE  SearchOrdersByProductName(
+--	-- Add the parameters for the stored procedure here
+--			@productname nvarchar(40)
+--	)
+--AS
+--BEGIN
+--	-- SET NOCOUNT ON added to prevent extra result sets from
+--	-- interfering with SELECT statements.
+--	SET NOCOUNT ON;
 		
-    -- Insert statements for procedure hereSELECT [orderid]
-select * from Sales.OrderDetails
-where productid in (
+--    -- Insert statements for procedure hereSELECT [orderid]
+--select * from Sales.OrderDetails
+--where productid in (
 
-SELECT productid
-  FROM [TSQLFundamentals2008].[Production].Products
-  WHERE productname LIKE '%' + @productname + '%'
-  )
-END
-GO
+--SELECT productid
+--  FROM [TSQLFundamentals2008].[Production].Products
+--  WHERE productname LIKE '%' + @productname + '%'
+--  )
+--END
+--GO

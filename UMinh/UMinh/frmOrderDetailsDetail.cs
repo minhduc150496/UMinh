@@ -36,6 +36,7 @@ namespace UMinh
             dataGridView.Columns.Add("qty", "Quantity");
             dataGridView.Columns.Add("discount", "Discount");
 
+            loadData();
         }
 
 
@@ -147,6 +148,11 @@ namespace UMinh
         #endregion
 
         private void frmOrderDetailsDetail_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -89,7 +89,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(134, 125);
+            this.btnReset.Location = new System.Drawing.Point(53, 129);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 33;
@@ -99,7 +99,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(53, 125);
+            this.btnSave.Location = new System.Drawing.Point(134, 129);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 32;
