@@ -145,5 +145,10 @@ namespace UMinh
             }
         }
         #endregion
+
+        private void frmOrderDetailsDetail_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

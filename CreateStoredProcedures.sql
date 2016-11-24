@@ -281,18 +281,7 @@ where productid in (
 
 SELECT productid
   FROM [TSQLFundamentals2008].[Production].Products
-  WHERE productname LIKE '%' + 'a' + '%'
+  WHERE productname LIKE '%' + @productname + '%'
   )
 END
 GO
-select * from Sales.OrderDetails
-where productid in (
-
-SELECT productid
-  FROM [TSQLFundamentals2008].[Production].Products
-  WHERE productname LIKE '%' + 'a' + '%'
-  )
-  
-GO
-
-
