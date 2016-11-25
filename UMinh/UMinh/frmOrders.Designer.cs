@@ -215,6 +215,7 @@
             this.Controls.Add(this.grbOrders);
             this.Name = "frmOrders";
             this.Text = "frmOrdersDetail";
+            this.Deactivate += new System.EventHandler(this.frmOrders_Deactivate);
             ((System.ComponentModel.ISupportInitialize)(this.dgOrderDetails)).EndInit();
             this.grbOrders.ResumeLayout(false);
             this.grbOrders.PerformLayout();

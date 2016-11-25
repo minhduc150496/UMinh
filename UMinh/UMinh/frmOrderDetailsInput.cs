@@ -13,8 +13,10 @@ namespace UMinh
 {
     public partial class frmOrderDetailsInput : Form
     {
-        private SqlConnection con;
-        private SqlCommand cmd;
+        private string connectionString = 
+            @"server=.;database=TSQLFundamentals2008;User ID=sa;Password=123456";
+        private List<int> productIDs = null;
+        public bool isAddNew = false;
 
         public frmOrderDetailsInput()
         {
@@ -47,10 +49,11 @@ namespace UMinh
             )
         {
             // Mo connection
+            SqlConnection con = new SqlConnection(connectionString);
             con.Open();
 
             // Tao Command
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "InsertOrderDetails";

@@ -14,15 +14,11 @@ namespace UMinh
 {
     public partial class frmOrders : Form
     {
-        private SqlConnection con;
-        private SqlCommand cmd;
+        private string connectionString = @"server=.;database=TSQLFundamentals2008;User ID=sa;Password=123456";
 
         public frmOrders()
         {
             InitializeComponent();
-            // Tao connection
-            con = new SqlConnection();
-            con.ConnectionString = @"server=.;database=TSQLFundamentals2008;User ID=sa;Password=123456";
 
             // Tuy chinh dgOrders
             dgOrders.AutoGenerateColumns = true;
@@ -68,10 +64,11 @@ namespace UMinh
         private void LoadOrders()
         {
             // Mo connection
+            SqlConnection con = new SqlConnection(connectionString);
             con.Open();
 
             // Tao Command
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "LoadOrders";
@@ -99,20 +96,24 @@ namespace UMinh
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occurs: " + ex);
+                MessageBox.Show("Error occurs when loading orders: " + ex);
             } finally
             {
-                con.Close();
+                if (con!=null)
+                {
+                    con.Close();
+                }
             }
         }
 
         private void LoadOrderDetailsByOrderID(int orderID)
         {
             // Mo connection
+            SqlConnection con = new SqlConnection(connectionString);
             con.Open();
 
             // Tao Command
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "LoadOrderDetailsByOrderID";
@@ -137,31 +138,35 @@ namespace UMinh
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error occurs.");
+                MessageBox.Show("Error occurs when loading order details:\n" + ex.Message);
             }
             finally
             {
-                con.Close();
+                if (con != null)
+                {
+                    con.Close();
+                }
             }
         }
 
         private void DeleteOrder(int orderID)
         {
             // Mo connection
+            SqlConnection con = new SqlConnection(connectionString);
             con.Open();
 
             // Tao Command
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "DeleteOrder";
 
+            cmd.Parameters.Add(new SqlParameter("@orderid", orderID));
             // Delete & Reload
             try
             {
-                cmd.Parameters.Add(new SqlParameter("@orderid", orderID));
                 cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
@@ -180,10 +185,11 @@ namespace UMinh
         private void DeleteItem(int orderID, int productID)
         {
             // Mo connection
+            SqlConnection con = new SqlConnection(connectionString);
             con.Open();
 
             // Tao Command
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "DeleteOrderDetails";
@@ -207,13 +213,86 @@ namespace UMinh
                 }
             }
         }
+
+        public void SearchOrders(frmOrderSearch childForm)
+        {
+            // Mo connection
+            SqlConnection con = new SqlConnection(connectionString);
+            con.Open();
+
+            // Tao Command
+            SqlCommand cmd = new SqlCommand("SearchOrders", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@searchByOrderDate", SqlDbType.Bit).Value
+                = childForm.chkOrderDate.Checked;
+            cmd.Parameters.Add("@minOrderDate", SqlDbType.DateTime).Value
+                = childForm.dtMinOrderDate.Value;
+            cmd.Parameters.Add("@maxOrderDate", SqlDbType.DateTime).Value
+                = childForm.dtMaxOrderDate.Value;
+
+            cmd.Parameters.Add("@searchByRequiredDate", SqlDbType.Bit).Value
+                = childForm.chkRequiredDate.Checked;
+            cmd.Parameters.Add("@minRequiredDate", SqlDbType.DateTime).Value
+                = childForm.dtMinRequiredDate.Value;
+            cmd.Parameters.Add("@maxRequiredDate", SqlDbType.DateTime).Value
+                = childForm.dtMaxRequiredDate.Value;
+
+            cmd.Parameters.Add("@searchByShippedDate", SqlDbType.Bit).Value
+                = childForm.chkShippedDate.Checked;
+            cmd.Parameters.Add("@minShippedDate", SqlDbType.DateTime).Value
+                = childForm.dtMinShippedDate.Value;
+            cmd.Parameters.Add("@maxShippedDate", SqlDbType.DateTime).Value
+                = childForm.dtMaxShippedDate.Value;
+
+            cmd.Parameters.Add("@searchByCustName", SqlDbType.Bit).Value
+                = childForm.chkCustomerName.Checked;
+            cmd.Parameters.Add("@custName", SqlDbType.NVarChar).Value
+                = childForm.txtCustomerName.Text;
+
+            cmd.Parameters.Add("@searchByOrderTotalPrice", SqlDbType.Bit).Value
+                = childForm.chkTotalPrice.Checked;
+            if (childForm.chkTotalPrice.Checked)
+            {
+                cmd.Parameters.Add("@minTotalPrice", SqlDbType.Money).Value
+                    = decimal.Parse(childForm.txtMinTotalPrice.Text);
+                cmd.Parameters.Add("@maxTotalPrice", SqlDbType.Money).Value
+                    = decimal.Parse(childForm.txtMaxTotalPrice.Text);
+            }
+
+            try
+            {
+                SqlDataReader dr = null;
+                if ((dr = cmd.ExecuteReader()) != null)
+                {
+                    using (dr)
+                    {
+                        dgOrders.Rows.Clear();
+                        while (dr.Read())
+                        {
+                            dgOrders.Rows.Add(
+                                dr[0], dr[1], dr[2],
+                                dr[3], dr[4], dr[5],
+                                dr[6], dr[7], dr[8],
+                                dr[9], dr[10], dr[11],
+                                dr[12], dr[13]);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error occurs when searching: \n" + ex);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
         #endregion
 
         #region Event Handling Methods
-        private void btnAddNew_Click(object sender, EventArgs e)
-        {
-        }
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgOrders.SelectedRows.Count == 0)
@@ -341,11 +420,13 @@ namespace UMinh
             try
             {
                 // Confirm dialog
-                MessageBox.Show("Are you sure you want to delete this order?", "Confirm Dialog", MessageBoxButtons.YesNo);
-                // Execute
-                var orderID = int.Parse(dgOrders.SelectedRows[0].Cells[0].Value.ToString());
-                DeleteOrder(orderID);
-                LoadOrders();
+                var result = MessageBox.Show("Are you sure you want to delete this order?", "Confirm Dialog", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes) { 
+                    // Execute
+                    var orderID = int.Parse(dgOrders.SelectedRows[0].Cells[0].Value.ToString());
+                    DeleteOrder(orderID);
+                    LoadOrders();
+                }
             }
             catch (Exception ex)
             {
@@ -355,7 +436,24 @@ namespace UMinh
 
         private void btnEditOrder_Click(object sender, EventArgs e)
         {
+            if (dgOrders.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("No row selected.");
+                return;
+            }
+            frmOrdersInput childForm = new frmOrdersInput();
+            using (childForm)
+            {
+                childForm.Owner = this;
+                childForm.isAddNew = false;
+                childForm.orderid = int.Parse(dgOrders.SelectedRows[0].Cells[0].ToString());
+                
+                childForm.ShowDialog();
+            }
+        }
 
+        private void frmOrders_Deactivate(object sender, EventArgs e)
+        {
         }
     }
 }

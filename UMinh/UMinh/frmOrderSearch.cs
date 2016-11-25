@@ -7,19 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace UMinh
 {
     public partial class frmOrderSearch : Form
     {
+        private string connectionString =
+            @"server=.;database=TSQLFundamentals2008;User ID=sa;Password=123456";
+
         public frmOrderSearch()
         {
             InitializeComponent();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        #region Data Access Methods
+        private void LoadCustomerIDs()
         {
 
+        }
+        #endregion
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            var parentForm = (frmOrders)this.Owner;
+            parentForm.SearchOrders((frmOrderSearch)this);
         }
     }
 }

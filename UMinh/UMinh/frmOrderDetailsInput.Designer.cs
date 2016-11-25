@@ -36,12 +36,14 @@
             this.numQuantity = new System.Windows.Forms.NumericUpDown();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.cbProduct = new System.Windows.Forms.ComboBox();
+            this.txtProduct = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUnitPrice
             // 
-            this.txtUnitPrice.Location = new System.Drawing.Point(102, 32);
+            this.txtUnitPrice.Location = new System.Drawing.Point(102, 60);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(100, 20);
             this.txtUnitPrice.TabIndex = 0;
@@ -49,7 +51,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 35);
+            this.label1.Location = new System.Drawing.Point(44, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 1;
@@ -58,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 61);
+            this.label2.Location = new System.Drawing.Point(50, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 3;
@@ -67,7 +69,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(47, 87);
+            this.label3.Location = new System.Drawing.Point(47, 115);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 5;
@@ -75,21 +77,21 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(102, 84);
+            this.textBox3.Location = new System.Drawing.Point(102, 112);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 4;
             // 
             // numQuantity
             // 
-            this.numQuantity.Location = new System.Drawing.Point(102, 59);
+            this.numQuantity.Location = new System.Drawing.Point(102, 87);
             this.numQuantity.Name = "numQuantity";
             this.numQuantity.Size = new System.Drawing.Size(100, 20);
             this.numQuantity.TabIndex = 6;
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(53, 129);
+            this.btnReset.Location = new System.Drawing.Point(53, 157);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 33;
@@ -99,7 +101,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(134, 129);
+            this.btnSave.Location = new System.Drawing.Point(134, 157);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 32;
@@ -107,11 +109,31 @@
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cbProduct
+            // 
+            this.cbProduct.FormattingEnabled = true;
+            this.cbProduct.Location = new System.Drawing.Point(102, 33);
+            this.cbProduct.Name = "cbProduct";
+            this.cbProduct.Size = new System.Drawing.Size(121, 21);
+            this.cbProduct.TabIndex = 34;
+            // 
+            // txtProduct
+            // 
+            this.txtProduct.AutoSize = true;
+            this.txtProduct.Location = new System.Drawing.Point(52, 36);
+            this.txtProduct.Name = "txtProduct";
+            this.txtProduct.Size = new System.Drawing.Size(44, 13);
+            this.txtProduct.TabIndex = 35;
+            this.txtProduct.Text = "Product";
+            this.txtProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmOrderDetailsInput
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 180);
+            this.ClientSize = new System.Drawing.Size(275, 206);
+            this.Controls.Add(this.txtProduct);
+            this.Controls.Add(this.cbProduct);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.numQuantity);
@@ -129,14 +151,15 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtUnitPrice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.NumericUpDown numQuantity;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Label txtProduct;
+        public System.Windows.Forms.TextBox txtUnitPrice;
+        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.NumericUpDown numQuantity;
+        public System.Windows.Forms.ComboBox cbProduct;
     }
 }

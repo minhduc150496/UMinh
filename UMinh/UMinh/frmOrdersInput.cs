@@ -17,6 +17,9 @@ namespace UMinh
         private SqlCommand cmd;
         public bool isAddNew = false;
         public int orderid = -1;
+        private List<int> customerIDs = null;
+        private List<int> employeeIDs = null;
+        private List<int> shipperIDs = null;
 
         public frmOrdersInput()
         {
@@ -120,12 +123,12 @@ namespace UMinh
                 return;
             }
             save(
-                int.Parse(txtCustomerID.Text)
-                , int.Parse(txtEmployeeID.Text)
+                customerIDs[cbCustomer.SelectedIndex]
+                , employeeIDs[cbEmployee.SelectedIndex]
                 , dtOrder.Value
                 , dtRequired.Value
                 , dtShipped.Value
-                , int.Parse(txtShipperID.Text)
+                , shipperIDs[cbShipper.SelectedIndex]
                 , Decimal.Parse(txtFreight.Text)
                 , txtShipName.Text
                 , txtShipAddress.Text
@@ -139,14 +142,11 @@ namespace UMinh
 
         private void button2_Click(object sender, EventArgs e)
         {
-            txtCustomerID.Clear();
-            txtEmployeeID.Clear();
             txtFreight.Clear();
             txtRegion.Clear();
             txtShipAddress.Clear();
             txtShipCity.Clear();
             txtShipName.Clear();
-            txtShipperID.Clear();
             txtShipPostalCode.Clear();
 
             dtOrder.ResetText();
@@ -154,6 +154,28 @@ namespace UMinh
             dtShipped.ResetText();
 
             cbCountry.ResetText();
+            cbCustomer.ResetText();
+            cbEmployee.ResetText();
+            cbShipper.ResetText();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            txtFreight.Clear();
+            txtRegion.Clear();
+            txtShipAddress.Clear();
+            txtShipCity.Clear();
+            txtShipName.Clear();
+            txtShipPostalCode.Clear();
+
+            dtOrder.ResetText();
+            dtRequired.ResetText();
+            dtShipped.ResetText();
+
+            cbCountry.ResetText();
+            cbCustomer.ResetText();
+            cbEmployee.ResetText();
+            cbShipper.ResetText();
         }
     }
 }

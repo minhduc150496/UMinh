@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdTotalPrice = new System.Windows.Forms.RadioButton();
-            this.rdCustName = new System.Windows.Forms.RadioButton();
-            this.rdShippedDate = new System.Windows.Forms.RadioButton();
-            this.rdRequiredDate = new System.Windows.Forms.RadioButton();
-            this.rdOrderDate = new System.Windows.Forms.RadioButton();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
@@ -53,16 +48,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dtMaxOrderDate = new System.Windows.Forms.DateTimePicker();
             this.dtMinOrderDate = new System.Windows.Forms.DateTimePicker();
+            this.chkOrderDate = new System.Windows.Forms.CheckBox();
+            this.chkRequiredDate = new System.Windows.Forms.CheckBox();
+            this.chkShippedDate = new System.Windows.Forms.CheckBox();
+            this.chkCustomerName = new System.Windows.Forms.CheckBox();
+            this.chkTotalPrice = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rdTotalPrice);
-            this.groupBox1.Controls.Add(this.rdCustName);
-            this.groupBox1.Controls.Add(this.rdShippedDate);
-            this.groupBox1.Controls.Add(this.rdRequiredDate);
-            this.groupBox1.Controls.Add(this.rdOrderDate);
+            this.groupBox1.Controls.Add(this.chkTotalPrice);
+            this.groupBox1.Controls.Add(this.chkCustomerName);
+            this.groupBox1.Controls.Add(this.chkShippedDate);
+            this.groupBox1.Controls.Add(this.chkRequiredDate);
+            this.groupBox1.Controls.Add(this.chkOrderDate);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.txtCustomerName);
@@ -84,79 +84,24 @@
             this.groupBox1.Controls.Add(this.dtMinOrderDate);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(523, 380);
+            this.groupBox1.Size = new System.Drawing.Size(523, 366);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
-            // 
-            // rdTotalPrice
-            // 
-            this.rdTotalPrice.AutoSize = true;
-            this.rdTotalPrice.Location = new System.Drawing.Point(12, 250);
-            this.rdTotalPrice.Name = "rdTotalPrice";
-            this.rdTotalPrice.Size = new System.Drawing.Size(156, 17);
-            this.rdTotalPrice.TabIndex = 68;
-            this.rdTotalPrice.TabStop = true;
-            this.rdTotalPrice.Text = "Search by order\'s total price";
-            this.rdTotalPrice.UseVisualStyleBackColor = true;
-            // 
-            // rdCustName
-            // 
-            this.rdCustName.AutoSize = true;
-            this.rdCustName.Location = new System.Drawing.Point(12, 189);
-            this.rdCustName.Name = "rdCustName";
-            this.rdCustName.Size = new System.Drawing.Size(148, 17);
-            this.rdCustName.TabIndex = 67;
-            this.rdCustName.TabStop = true;
-            this.rdCustName.Text = "Search by customer name";
-            this.rdCustName.UseVisualStyleBackColor = true;
-            // 
-            // rdShippedDate
-            // 
-            this.rdShippedDate.AutoSize = true;
-            this.rdShippedDate.Location = new System.Drawing.Point(12, 140);
-            this.rdShippedDate.Name = "rdShippedDate";
-            this.rdShippedDate.Size = new System.Drawing.Size(137, 17);
-            this.rdShippedDate.TabIndex = 66;
-            this.rdShippedDate.TabStop = true;
-            this.rdShippedDate.Text = "Search by shipped date";
-            this.rdShippedDate.UseVisualStyleBackColor = true;
-            // 
-            // rdRequiredDate
-            // 
-            this.rdRequiredDate.AutoSize = true;
-            this.rdRequiredDate.Location = new System.Drawing.Point(12, 80);
-            this.rdRequiredDate.Name = "rdRequiredDate";
-            this.rdRequiredDate.Size = new System.Drawing.Size(138, 17);
-            this.rdRequiredDate.TabIndex = 65;
-            this.rdRequiredDate.TabStop = true;
-            this.rdRequiredDate.Text = "Search by required date";
-            this.rdRequiredDate.UseVisualStyleBackColor = true;
-            // 
-            // rdOrderDate
-            // 
-            this.rdOrderDate.AutoSize = true;
-            this.rdOrderDate.Location = new System.Drawing.Point(12, 19);
-            this.rdOrderDate.Name = "rdOrderDate";
-            this.rdOrderDate.Size = new System.Drawing.Size(124, 17);
-            this.rdOrderDate.TabIndex = 64;
-            this.rdOrderDate.TabStop = true;
-            this.rdOrderDate.Text = "Search by order date";
-            this.rdOrderDate.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(257, 329);
+            this.btnSearch.Location = new System.Drawing.Point(257, 318);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(83, 23);
             this.btnSearch.TabIndex = 63;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(168, 329);
+            this.btnRefresh.Location = new System.Drawing.Point(168, 318);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(83, 23);
             this.btnRefresh.TabIndex = 62;
@@ -165,21 +110,21 @@
             // 
             // txtCustomerName
             // 
-            this.txtCustomerName.Location = new System.Drawing.Point(12, 212);
+            this.txtCustomerName.Location = new System.Drawing.Point(12, 222);
             this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(245, 20);
+            this.txtCustomerName.Size = new System.Drawing.Size(253, 20);
             this.txtCustomerName.TabIndex = 60;
             // 
             // txtMaxTotalPrice
             // 
-            this.txtMaxTotalPrice.Location = new System.Drawing.Point(154, 272);
+            this.txtMaxTotalPrice.Location = new System.Drawing.Point(162, 271);
             this.txtMaxTotalPrice.Name = "txtMaxTotalPrice";
             this.txtMaxTotalPrice.Size = new System.Drawing.Size(103, 20);
             this.txtMaxTotalPrice.TabIndex = 58;
             // 
             // txtMinTotalPrice
             // 
-            this.txtMinTotalPrice.Location = new System.Drawing.Point(46, 272);
+            this.txtMinTotalPrice.Location = new System.Drawing.Point(46, 271);
             this.txtMinTotalPrice.Name = "txtMinTotalPrice";
             this.txtMinTotalPrice.Size = new System.Drawing.Size(88, 20);
             this.txtMinTotalPrice.TabIndex = 57;
@@ -187,7 +132,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 275);
+            this.label7.Location = new System.Drawing.Point(9, 274);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 13);
             this.label7.TabIndex = 56;
@@ -196,7 +141,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(132, 275);
+            this.label8.Location = new System.Drawing.Point(140, 274);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(16, 13);
             this.label8.TabIndex = 55;
@@ -298,11 +243,61 @@
             this.dtMinOrderDate.Size = new System.Drawing.Size(208, 20);
             this.dtMinOrderDate.TabIndex = 38;
             // 
+            // chkOrderDate
+            // 
+            this.chkOrderDate.AutoSize = true;
+            this.chkOrderDate.Location = new System.Drawing.Point(12, 20);
+            this.chkOrderDate.Name = "chkOrderDate";
+            this.chkOrderDate.Size = new System.Drawing.Size(125, 17);
+            this.chkOrderDate.TabIndex = 64;
+            this.chkOrderDate.Text = "Search by order date";
+            this.chkOrderDate.UseVisualStyleBackColor = true;
+            // 
+            // chkRequiredDate
+            // 
+            this.chkRequiredDate.AutoSize = true;
+            this.chkRequiredDate.Location = new System.Drawing.Point(12, 80);
+            this.chkRequiredDate.Name = "chkRequiredDate";
+            this.chkRequiredDate.Size = new System.Drawing.Size(139, 17);
+            this.chkRequiredDate.TabIndex = 65;
+            this.chkRequiredDate.Text = "Search by required date";
+            this.chkRequiredDate.UseVisualStyleBackColor = true;
+            // 
+            // chkShippedDate
+            // 
+            this.chkShippedDate.AutoSize = true;
+            this.chkShippedDate.Location = new System.Drawing.Point(12, 140);
+            this.chkShippedDate.Name = "chkShippedDate";
+            this.chkShippedDate.Size = new System.Drawing.Size(138, 17);
+            this.chkShippedDate.TabIndex = 66;
+            this.chkShippedDate.Text = "Search by shipped date";
+            this.chkShippedDate.UseVisualStyleBackColor = true;
+            // 
+            // chkCustomerName
+            // 
+            this.chkCustomerName.AutoSize = true;
+            this.chkCustomerName.Location = new System.Drawing.Point(12, 199);
+            this.chkCustomerName.Name = "chkCustomerName";
+            this.chkCustomerName.Size = new System.Drawing.Size(149, 17);
+            this.chkCustomerName.TabIndex = 67;
+            this.chkCustomerName.Text = "Search by customer name";
+            this.chkCustomerName.UseVisualStyleBackColor = true;
+            // 
+            // chkTotalPrice
+            // 
+            this.chkTotalPrice.AutoSize = true;
+            this.chkTotalPrice.Location = new System.Drawing.Point(12, 248);
+            this.chkTotalPrice.Name = "chkTotalPrice";
+            this.chkTotalPrice.Size = new System.Drawing.Size(123, 17);
+            this.chkTotalPrice.TabIndex = 68;
+            this.chkTotalPrice.Text = "Search by total price";
+            this.chkTotalPrice.UseVisualStyleBackColor = true;
+            // 
             // frmOrderSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(550, 404);
+            this.ClientSize = new System.Drawing.Size(550, 390);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmOrderSearch";
             this.Text = "frmOrderSearch";
@@ -315,29 +310,29 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rdTotalPrice;
-        private System.Windows.Forms.RadioButton rdCustName;
-        private System.Windows.Forms.RadioButton rdShippedDate;
-        private System.Windows.Forms.RadioButton rdRequiredDate;
-        private System.Windows.Forms.RadioButton rdOrderDate;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.TextBox txtCustomerName;
-        private System.Windows.Forms.TextBox txtMaxTotalPrice;
-        private System.Windows.Forms.TextBox txtMinTotalPrice;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dtMaxShippedDate;
-        private System.Windows.Forms.DateTimePicker dtMinShippedDate;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtMaxRequiredDate;
-        private System.Windows.Forms.DateTimePicker dtMinRequiredDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtMaxOrderDate;
-        private System.Windows.Forms.DateTimePicker dtMinOrderDate;
+        public System.Windows.Forms.TextBox txtCustomerName;
+        public System.Windows.Forms.TextBox txtMaxTotalPrice;
+        public System.Windows.Forms.TextBox txtMinTotalPrice;
+        public System.Windows.Forms.DateTimePicker dtMaxShippedDate;
+        public System.Windows.Forms.DateTimePicker dtMinShippedDate;
+        public System.Windows.Forms.DateTimePicker dtMaxRequiredDate;
+        public System.Windows.Forms.DateTimePicker dtMinRequiredDate;
+        public System.Windows.Forms.DateTimePicker dtMaxOrderDate;
+        public System.Windows.Forms.DateTimePicker dtMinOrderDate;
+        public System.Windows.Forms.CheckBox chkTotalPrice;
+        public System.Windows.Forms.CheckBox chkCustomerName;
+        public System.Windows.Forms.CheckBox chkShippedDate;
+        public System.Windows.Forms.CheckBox chkRequiredDate;
+        public System.Windows.Forms.CheckBox chkOrderDate;
     }
 }
