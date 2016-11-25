@@ -28,6 +28,7 @@ namespace UMinh
             dataGridView.AllowUserToAddRows = false;
             dataGridView.ReadOnly = true;
             dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             // Gan ten cot 
             dataGridView.Columns.Add("orderid", "Order ID");
@@ -60,6 +61,7 @@ namespace UMinh
                 {
                     using (dr)
                     {
+                        dataGridView.Rows.Clear();
                         while (dr.Read())
                         {
                             dataGridView.Rows.Add
@@ -74,7 +76,10 @@ namespace UMinh
             }
             finally
             {
-                con.Close();
+                if (con != null)
+                {
+                    con.Close();
+                }
             }
         }
 
@@ -95,7 +100,6 @@ namespace UMinh
                 cmd.Parameters.Add(new SqlParameter("@orderid", orderID));
                 cmd.Parameters.Add(new SqlParameter("@productid", productID));
                 cmd.ExecuteNonQuery();
-                loadData();
             }
             catch (Exception ex)
             {
@@ -103,7 +107,9 @@ namespace UMinh
             }
             finally
             {
-                con.Close();
+                if (con!=null) { 
+                    con.Close();
+                }
             }
         }
         #endregion
@@ -111,7 +117,7 @@ namespace UMinh
         #region Event Handling Methods
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            frmOrdersInput inputForm = new frmOrdersInput();
+            frmOrderDetailsInput inputForm = new frmOrderDetailsInput();
             using (inputForm)
             {
                 inputForm.Owner = this;
@@ -139,6 +145,7 @@ namespace UMinh
                 var orderID = int.Parse(dataGridView.SelectedRows[0].Cells[0].Value.ToString());
                 var productID = int.Parse(dataGridView.SelectedRows[0].Cells[1].Value.ToString());
                 delete(orderID, productID);
+                loadData();
             }
             catch (Exception ex)
             {

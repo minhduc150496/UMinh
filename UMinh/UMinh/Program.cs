@@ -16,7 +16,7 @@ namespace UMinh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmOrderDetailsDetail());
+            Application.Run(new frmOrders());
         }
     }
 }

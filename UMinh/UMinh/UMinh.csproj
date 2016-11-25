@@ -59,11 +59,17 @@
     <Compile Include="frmOrderDetailsInput.Designer.cs">
       <DependentUpon>frmOrderDetailsInput.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmOrdersDetail.cs">
+    <Compile Include="frmOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmOrdersDetail.Designer.cs">
-      <DependentUpon>frmOrdersDetail.cs</DependentUpon>
+    <Compile Include="frmOrders.Designer.cs">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOrderSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrderSearch.Designer.cs">
+      <DependentUpon>frmOrderSearch.cs</DependentUpon>
     </Compile>
     <Compile Include="frmOrdersInput.cs">
       <SubType>Form</SubType>
@@ -90,8 +96,11 @@
     <EmbeddedResource Include="frmOrderDetailsInput.resx">
       <DependentUpon>frmOrderDetailsInput.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmOrdersDetail.resx">
-      <DependentUpon>frmOrdersDetail.cs</DependentUpon>
+    <EmbeddedResource Include="frmOrders.resx">
+      <DependentUpon>frmOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOrderSearch.resx">
+      <DependentUpon>frmOrderSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmOrdersInput.resx">
       <DependentUpon>frmOrdersInput.cs</DependentUpon>

@@ -21,7 +21,7 @@ namespace UMinh
         {
             if (true)
             {
-                frmOrdersDetail form = new frmOrdersDetail();
+                frmOrders form = new frmOrders();
                 form.MdiParent = this;
                 form.Show();
             }
